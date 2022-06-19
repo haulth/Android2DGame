@@ -179,10 +179,22 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
         ChibiCharacter chibi1 = new ChibiCharacter(this,chibiBitmap1,100,50);
 
         Bitmap chibiBitmap2 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi2);
-        ChibiCharacter chibi2 = new ChibiCharacter(this,chibiBitmap2,300,150);
+        ChibiCharacter chibi2 = new ChibiCharacter(this,chibiBitmap2,200,150);
+
+        Bitmap chibiBitmap3 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi3);
+        ChibiCharacter chibi3 = new ChibiCharacter(this,chibiBitmap3,300,50);
+
+        Bitmap chibiBitmap4 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi4);
+        ChibiCharacter chibi4 = new ChibiCharacter(this,chibiBitmap4,300,100);
+
+        Bitmap chibiBitmap5 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi5);
+        ChibiCharacter chibi5 = new ChibiCharacter(this,chibiBitmap5,300,50);
 
         this.chibiList.add(chibi1);
         this.chibiList.add(chibi2);
+        this.chibiList.add(chibi3);
+        this.chibiList.add(chibi4);
+        this.chibiList.add(chibi5);
 
         this.gameThread = new GameThread(this,holder);
         this.gameThread.setRunning(true);

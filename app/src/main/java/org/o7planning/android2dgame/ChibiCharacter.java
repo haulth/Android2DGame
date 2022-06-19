@@ -23,8 +23,8 @@ public  class ChibiCharacter extends  GameObject {
     // Velocity of game character (pixel/millisecond)
     public static final float VELOCITY = 0.1f;
 
-    private int movingVectorX = 10;
-    private int movingVectorY = 5;
+    private int movingVectorX = 100;
+    private int movingVectorY = 50;
 
     private long lastDrawNanoTime =-1;
 
