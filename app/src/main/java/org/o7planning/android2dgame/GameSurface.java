@@ -1,12 +1,9 @@
 package org.o7planning.android2dgame;
+
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.media.AudioAttributes;
-import android.media.AudioManager;
-import android.media.SoundPool;
-import android.os.Build;
 import android.view.MotionEvent;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -19,7 +16,7 @@ import java.util.List;
 public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     private GameThread gameThread;
 
-    private final List<ChibiCharactor> chibiList = new ArrayList<ChibiCharactor>();
+    private final List<ChibiCharacter> chibiList = new ArrayList<ChibiCharacter>();
     private final List<Explosion> explosionList = new ArrayList<Explosion>();
 
     public GameSurface(Context context)  {
@@ -40,10 +37,10 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
             int x=  (int)event.getX();
             int y = (int)event.getY();
 
-            Iterator<ChibiCharactor> iterator= this.chibiList.iterator();
+            Iterator<ChibiCharacter> iterator= this.chibiList.iterator();
 
             while(iterator.hasNext()) {
-                ChibiCharactor chibi = iterator.next();
+                ChibiCharacter chibi = iterator.next();
                 if( chibi.getX() < x && x < chibi.getX() + chibi.getWidth()
                         && chibi.getY() < y && y < chibi.getY()+ chibi.getHeight())  {
                     // Remove the current element from the iterator and the list.
@@ -58,7 +55,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
             }
 
 
-            for(ChibiCharactor chibi: chibiList) {
+            for(ChibiCharacter chibi: chibiList) {
                 int movingVectorX =x-  chibi.getX() ;
                 int movingVectorY =y-  chibi.getY() ;
                 chibi.setMovingVector(movingVectorX, movingVectorY);
@@ -69,7 +66,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     }
 
     public void update()  {
-        for(ChibiCharactor chibi: chibiList) {
+        for(ChibiCharacter chibi: chibiList) {
             chibi.update();
         }
         for(Explosion explosion: this.explosionList)  {
@@ -92,7 +89,7 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     public void draw(Canvas canvas)  {
         super.draw(canvas);
 
-        for(ChibiCharactor chibi: chibiList)  {
+        for(ChibiCharacter chibi: chibiList)  {
             chibi.draw(canvas);
         }
 
@@ -106,10 +103,10 @@ public class GameSurface extends SurfaceView implements SurfaceHolder.Callback {
     @Override
     public void surfaceCreated(SurfaceHolder holder) {
         Bitmap chibiBitmap1 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi1);
-        ChibiCharactor chibi1 = new ChibiCharactor(this,chibiBitmap1,100,50);
+        ChibiCharacter chibi1 = new ChibiCharacter(this,chibiBitmap1,100,50);
 
         Bitmap chibiBitmap2 = BitmapFactory.decodeResource(this.getResources(),R.drawable.chibi2);
-        ChibiCharactor chibi2 = new ChibiCharactor(this,chibiBitmap2,300,150);
+        ChibiCharacter chibi2 = new ChibiCharacter(this,chibiBitmap2,300,150);
 
         this.chibiList.add(chibi1);
         this.chibiList.add(chibi2);
